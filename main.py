@@ -6,7 +6,7 @@ TOKEN = os.getenv("TOKEN")
 bot = telebot.TeleBot(TOKEN)
 
 def shorten_link(url):
-    api_url = f"http://tinyurl.com/api-create.php?url={url}"
+    api_url = f"https://is.gd/create.php?format=simple&url={url}"
     response = requests.get(api_url)
     return response.text
 

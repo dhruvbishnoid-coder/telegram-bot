@@ -12,20 +12,10 @@ def shorten_link(url):
 
 @bot.message_handler(commands=['start'])
 def start_message(message):
-    text = """👋 Welcome to SwiftXShort 🚀
-
-Is bot ko use karne ke liye pehle ye steps complete kare:
-
-1️⃣ Instagram follow kare:
-https://www.instagram.com/dhruvxbeniwal/
-
-2️⃣ Telegram channel join kare:
-https://t.me/swiftxshort
-
-✅ Dono steps complete karne ke baad apna link bheje.
-Main turant short karke dunga 🚀
-"""
-    bot.reply_to(message, text)
+    bot.reply_to(
+        message,
+        "Welcome 😊\n\nFollow me on Instagram 👇\nhttps://www.instagram.com/dhruvxbeniwal/"
+    )
 
 @bot.message_handler(func=lambda message: True)
 def send_short_link(message):
@@ -33,8 +23,8 @@ def send_short_link(message):
     
     if long_url.startswith("http"):
         short_url = shorten_link(long_url)
-        bot.reply_to(message, f"🔗 Short Link:\n{short_url}")
+        bot.reply_to(message, f"Short Link: {short_url}")
     else:
-        bot.reply_to(message, "⚠️ Please send a valid link starting with http or https")
+        bot.reply_to(message, "Please send a valid link starting with http or https")
 
 bot.polling()
